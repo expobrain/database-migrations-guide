@@ -1,0 +1,6 @@
+[book]
+authors = ["expobrain"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Database Migrations Guide"
