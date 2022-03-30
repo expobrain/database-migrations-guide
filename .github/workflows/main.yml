@@ -17,5 +17,6 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           use-linkcheck: true
+          use-opengh: true
       - name: Check links
         run: mdbook-linkcheck -s
