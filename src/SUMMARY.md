@@ -10,6 +10,8 @@
     - [Indexes](postgres/add/indexes.md)
     - [Constraints](postgres/add/constraints.md)
     - [Foreign keys](postgres/add/foreign_keys.md)
+  - [Drop](postgres/drop/README.md)
+    - [Tables](postgres/drop/tables.md)
   - [Alter table](postgres/alter_table.md)
   - [Alter data](postgres/alter_data.md)
   - [How-to's](postgres/how_tos.md)
