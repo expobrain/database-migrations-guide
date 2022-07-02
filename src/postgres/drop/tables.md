@@ -1,4 +1,4 @@
-# Tables
+# Drop tables
 
 Dropping a table is unsafe if the table has foreign keys to other tables:
 
