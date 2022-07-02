@@ -19,4 +19,4 @@ jobs:
           use-linkcheck: true
           use-opengh: true
       - name: Check links
-        run: mdbook-linkcheck -s
+        run: make lint
