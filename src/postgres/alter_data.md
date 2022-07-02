@@ -14,7 +14,7 @@ UPDATE table SET column = value WHERE condition;
 
 Where many rows are updated, this will take a long time to complete, and, as a FOR UPDATE lock is obtained on the selected rows, **writes to those rows will be blocked** until the migration is complete.
 
-## Safe Alternative
+## Safe alternative
 
 Modify the data in batches that take about a second each to execute. This will reduce the amount of time the lock is held.
 

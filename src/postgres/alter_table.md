@@ -6,7 +6,7 @@
 
 A rename must be treated as **adding a column**, then **backfilling data**, then **removing a column**, which means it has the pitfalls of all three, along with the problem of **synchronising writes** to the old and new columns.
 
-## Safe Alternative
+## Safe alternative
 
 1. Add the new column.
 1. Synchronise writes to both columns.
@@ -43,7 +43,7 @@ ALTER TABLE table COLUMN column SET NOT NULL;
 >
 > All queries of every kind will be blocked until the migration is complete because an `ACCESS EXCLUSIVE` lock is required. Since a full table scan is required to validate the constraint, this could take a long time for large tables.
 
-## Safe Alternative
+## Safe alternative
 
 Create a `NOT NULL` check constraint instead.
 
