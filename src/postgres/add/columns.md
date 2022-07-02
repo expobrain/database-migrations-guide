@@ -1,3 +1,5 @@
+# Add Columns
+
 > List fo how-tos related to tese operations:
 >
 > - [How can the ACCESS EXCLUSIVE lock break applications?](../how_tos.md#how-can-the-access-exclusive-lock-break-applications)
@@ -6,9 +8,9 @@
 > - [HOW-TO: Write applications to not block migrations](../how_tos.md#how-to-write-applications-to-not-block-migrations)
 > - [How to obtain a lock safely for a migration](../how_tos.md#how-to-obtain-a-lock-safely-for-a-migration)
 
-# Nullable
+## Nullable
 
-## With a default
+### With a default
 
 It is unsafe to add a new column:
 
@@ -38,6 +40,6 @@ See the [How to obtain a lock safely for a migration](../how_tos.md#how-to-obtai
 
 > Warning: `NULL` columns cannot be made into `NOT NULL` columns safely after-the-fact until Postgres 12. So if you are actually intending to make a `NOT NULL` column, then create a `NOT NULL` column with a dummy default value.
 
-# Not nullable
+## Not nullable
 
 Add not null - safe alternative possible.

@@ -1,4 +1,6 @@
-# How can the ACCESS EXCLUSIVE lock break applications?
+# How to guides
+
+## How can the ACCESS EXCLUSIVE lock break applications?
 
 An `ACCESS EXCLUSIVE` lock conflicts with everything, including:
 
@@ -11,7 +13,7 @@ If a transaction is used, all rows will be locked until the transaction is commi
 
 > Warning: A migration needing this lock will block other queries as soon as the SQL is sent to Postgres (even while waiting for a lock). See [How can the lock queue break applications](#how-can-the-lock-queue-break-applications)?
 
-# How can the lock queue break applications?
+## How can the lock queue break applications?
 
 A migration can block application queries even while it is waiting for its turn to execute.
 
@@ -38,7 +40,7 @@ SET statement_timeout = 1000;
 
 Since this is likely to timeout for busy tables, an automatic retry script _should_ be used. See [How to obtain a lock safely for a migration](#how-can-the-lock-queue-break-applications).
 
-# How can applications block migrations?
+## How can applications block migrations?
 
 Lock queue.
 
@@ -68,7 +70,7 @@ There are usually two parts to a server application: the client-facing applicati
 
 The client-facing part usually naturally has short queries and transactions. However, background tasks can have long-running transactions and queries that can block migrations.
 
-# Write applications to not block migrations
+## Write applications to not block migrations
 
 **GOAL**: The application needs to give migrations a chance to obtain a lock.
 
@@ -82,7 +84,7 @@ Actions:
 1. Even with this, for extremely busy tables, it will be necessary to be able to temporarily shut down background jobs leaving only the absolutely necessary parts of the application running.
 1. Background tasks should be written to handle immediate termination, and there should be a mechanism to immediately or gracefully stop these tasks.
 
-# How to obtain a lock safely for a migration
+## How to obtain a lock safely for a migration
 
 **GOAL**: Execute a migration that obtains a dangerous lock without blocking application queries.
 
@@ -110,7 +112,7 @@ ALTER TABLE table ADD COLUMN column INT DEFAULT 0;
 
 Every one second queries will be blocked for 100 milliseconds, except when the migration has got its lock, then queries could be blocked for 1000 milliseconds.
 
-# How can the FOR UPDATE lock break applications?
+## How can the FOR UPDATE lock break applications?
 
 From the perspective of an application, the row-level `FOR UPDATE` lock will block some writes to the table, e.g.:
 
@@ -124,13 +126,13 @@ If a transaction is used, the rows will be locked until the transaction is commi
 
 Therefore it's important to reduce the number of rows blocked, and to reduce the amount of time those rows are blocked, in order to prevent the application from being blocked with its update operations.
 
-# Can the ROW EXCLUSIVE lock break applications?
+## Can the ROW EXCLUSIVE lock break applications?
 
 Technically, a table-level `ROW EXCLUSIVE` is obtained as well as this is an UPDATE. However, this doesn't conflict with the kind of queries that applications do including other `UPDATE` SQL.
 
 On the other hand, it _can_ conflict with other migrations, so make sure you only do one migration at a time and this includes data migrations.
 
-# What are the disadvantages of a NOT NULL check constraint
+## What are the disadvantages of a NOT NULL check constraint
 
 - People may not realise the column is` NOT NULL` because the constraint belongs to the table rather than being an option on the column.
 - Writes are slower (~0.5-1% hit)
