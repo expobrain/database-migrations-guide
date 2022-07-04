@@ -137,3 +137,13 @@ On the other hand, it _can_ conflict with other migrations, so make sure you onl
 - People may not realise the column is` NOT NULL` because the constraint belongs to the table rather than being an option on the column.
 - Writes are slower (~0.5-1% hit)
 - Managing a constraint may be more complicated with your ORM and migration framework(s).
+
+## Get the list of index for a given table
+
+To get the list of all the indexes for a given table in PostgreSQL:
+
+```sql
+SELECT *
+FROM pg_indexes
+WHERE tablename = 'my-table'
+```
