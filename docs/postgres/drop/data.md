@@ -1,4 +1,4 @@
-# Drop data
+## Unsafe alternative
 
 Deleting all data in a table using TRUNCATE is unsafe because it needs an ACCESS EXCLUSIVE lock:
 

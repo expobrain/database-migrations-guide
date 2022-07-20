@@ -1,5 +1,5 @@
-# Mdbook
-book
-
 # VSCode
 .vscode/
+
+# pyenv
+.python-version
