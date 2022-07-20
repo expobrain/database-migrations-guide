@@ -1,12 +1,12 @@
-# Add Columns
+!!! info
 
-> List fo how-tos related to tese operations:
->
-> - [How can the ACCESS EXCLUSIVE lock break applications?](../how_tos.md#how-can-the-access-exclusive-lock-break-applications)
-> - [How can the lock queue break applications?](../how_tos.md#how-can-the-lock-queue-break-applications)
-> - [How can applications block migrations?](../how_tos.md#how-can-applications-block-migrations)
-> - [HOW-TO: Write applications to not block migrations](../how_tos.md#how-to-write-applications-to-not-block-migrations)
-> - [How to obtain a lock safely for a migration](../how_tos.md#how-to-obtain-a-lock-safely-for-a-migration)
+    List fo how-tos related to tese operations:
+
+    - [How can the ACCESS EXCLUSIVE lock break applications?](../how_tos.md#how-can-the-access-exclusive-lock-break-applications)
+    - [How can the lock queue break applications?](../how_tos.md#how-can-the-lock-queue-break-applications)
+    - [How can applications block migrations?](../how_tos.md#how-can-applications-block-migrations)
+    - [HOW-TO: Write applications to not block migrations](../how_tos.md#how-to-write-applications-to-not-block-migrations)
+    - [How to obtain a lock safely for a migration](../how_tos.md#how-to-obtain-a-lock-safely-for-a-migration)
 
 ## Nullable
 
@@ -38,8 +38,12 @@ However, if the application is written with this in mind and migration timeouts 
 
 See the [How to obtain a lock safely for a migration](../how_tos.md#how-to-obtain-a-lock-safely-for-a-migration) section below for a step-by-step guide on what to do.
 
-> Warning: `NULL` columns cannot be made into `NOT NULL` columns safely after-the-fact until Postgres 12. So if you are actually intending to make a `NOT NULL` column, then create a `NOT NULL` column with a dummy default value.
+!!! warning
+
+    `NULL` columns cannot be made into `NOT NULL` columns safely after-the-fact until Postgres 12. So if you are actually intending to make a `NOT NULL` column, then create a `NOT NULL` column with a dummy default value.
 
 ## Not nullable
 
-Add not null - safe alternative possible.
+!!! bug
+
+    **Incomplete - add safe alternative.**

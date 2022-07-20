@@ -1,11 +1,13 @@
-# Alter data
+!!! info
 
-> List fo how-tos related to tese operations:
->
-> - [How can the FOR UPDATE lock break applications?](how_tos.md#how-can-the-for-update-lock-break-applications)
-> - [Can the ROW EXCLUSIVE lock break applications?](how_tos.md#can-the-row-exclusive-lock-break-applications)
+    List fo how-tos related to tese operations:
 
-The following kinds of data migrations are unsafe:
+    - [How can the FOR UPDATE lock break applications?](../how_tos.md#how-can-the-for-update-lock-break-applications)
+    - [Can the ROW EXCLUSIVE lock break applications?](../how_tos.md#can-the-row-exclusive-lock-break-applications)
+
+## Unsafe alternative
+
+The following kinds of data migrations are unsafe
 
 ```sql
 UPDATE table SET column = value;

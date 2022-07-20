@@ -1,4 +1,4 @@
-# Add indexes
+## Unsafe alternative
 
 Creating an index is unsafe:
 
@@ -23,8 +23,9 @@ The index is created in more than one step and the whole process is described in
 Creating an index concurrently has two major drawbacks:
 
 1. **the DDL cannot be performed in a transaction**, because of the nature of the process itself; this means that the operation is not atomic and to roll back you need to perform a DROP INDEX IF EXISTS
-2. **consider indempotent index creation in tyour database migrations**, because the concurrent creation of an index is not an atomic operation if it fails will leave an invalid index in the database; this means that in your database migrations must consider this case and i.e. use DROP INDEX IF EXISTS before creating the new index concurrently:
-    ```sql
-    DROP INDEX IF EXISTS my_index;
-    CREATE INDEX CONCURRENTLY my_index ON my_table (my_column);
-    ```
+2. **consider indempotent index creation in your database migrations**, because the concurrent creation of an index is not an atomic operation if it fails will leave an invalid index in the database; this means that in your database migrations must consider this case and i.e. use DROP INDEX IF EXISTS before creating the new index concurrently:
+
+```sql
+DROP INDEX IF EXISTS my_index;
+CREATE INDEX CONCURRENTLY my_index ON my_table (my_column);
+```

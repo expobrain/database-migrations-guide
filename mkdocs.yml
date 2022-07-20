@@ -1,0 +1,25 @@
+site_name: Database Migrations Guide
+strict: true
+repo_name: expobrain/database-migrations-guide
+repo_url: https://github.com/expobrain/database-migrations-guide
+
+theme:
+  name: material
+  palette:
+    primary: deep purple
+  features:
+    - navigation.tabs
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - toc.follow
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.details

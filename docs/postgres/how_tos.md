@@ -1,5 +1,3 @@
-# How to guides
-
 ## How can the ACCESS EXCLUSIVE lock break applications?
 
 An `ACCESS EXCLUSIVE` lock conflicts with everything, including:
@@ -11,7 +9,9 @@ An `ACCESS EXCLUSIVE` lock conflicts with everything, including:
 
 If a transaction is used, all rows will be locked until the transaction is committed.
 
-> Warning: A migration needing this lock will block other queries as soon as the SQL is sent to Postgres (even while waiting for a lock). See [How can the lock queue break applications](#how-can-the-lock-queue-break-applications)?
+!!! warning
+
+    A migration needing this lock will block other queries as soon as the SQL is sent to Postgres (even while waiting for a lock). See [How can the lock queue break applications](#how-can-the-lock-queue-break-applications)?
 
 ## How can the lock queue break applications?
 
@@ -36,7 +36,9 @@ Therefore, you _should_ use a `statement_timeout` that is about a second long.
 SET statement_timeout = 1000;
 ```
 
-> Note that a `lock_timeout` is a subset of a `statement_timeout`, but queries are blocked while in the lock queue and while the migration is executing therefore a `statement_timeout` is the appropriate timeout to use.
+!!! note
+
+    Note that a `lock_timeout` is a subset of a `statement_timeout`, but queries are blocked while in the lock queue and while the migration is executing therefore a `statement_timeout` is the appropriate timeout to use.
 
 Since this is likely to timeout for busy tables, an automatic retry script _should_ be used. See [How to obtain a lock safely for a migration](#how-can-the-lock-queue-break-applications).
 
@@ -72,9 +74,9 @@ The client-facing part usually naturally has short queries and transactions. How
 
 ## Write applications to not block migrations
 
-**GOAL**: The application needs to give migrations a chance to obtain a lock.
+he application needs to give migrations a chance to obtain a lock.
 
-**SOLUTION**: Structure application queries and transactions so that there is opportunity for other processes to obtain a lock.
+So structure application queries and transactions so that there is opportunity for other processes to obtain a lock.
 
 Actions:
 
@@ -86,9 +88,9 @@ Actions:
 
 ## How to obtain a lock safely for a migration
 
-**GOAL**: Execute a migration that obtains a dangerous lock without blocking application queries.
+Execute a migration that obtains a dangerous lock without blocking application queries.
 
-Execute the migration using a script to automatically retry, and use a short `lock_timeout` with a sleep time to minimise the impact on the application.
+So execute the migration using a script to automatically retry, and use a short `lock_timeout` with a sleep time to minimise the impact on the application.
 
 The retry script:
 
