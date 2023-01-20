@@ -11,4 +11,4 @@ down:
 	docker compose down
 
 loop:
-	PGPASSWORD=postgres psql -h localhost -U postgres test -f ./loop.sql
+	poetry run python loop.py
