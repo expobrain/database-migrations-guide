@@ -9,7 +9,7 @@ license = "MIT"
 python = "^3.10"
 
 [tool.poetry.dev-dependencies]
-mkdocs-material = "^9.5.33"
+mkdocs-material = "^9.5.34"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
