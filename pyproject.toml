@@ -10,7 +10,7 @@ package-mode = false
 python = "^3.13"
 
 [tool.poetry.group.dev.dependencies]
-mkdocs-material = "^9.6.16"
+mkdocs-material = "^9.7.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
