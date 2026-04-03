@@ -1,17 +1,13 @@
-[tool.poetry]
-name = "database-migrations-guide-main"
+[project]
+name = "database-migrations-guide"
 version = "0.1.0"
 description = ""
-authors = ["Daniele Esposti <daniele.esposti@gmail.com>"]
-license = "MIT"
-package-mode = false
+authors = [{name = "Daniele Esposti", email = "daniele.esposti@gmail.com"}]
+license = {text = "MIT"}
+requires-python = ">=3.13"
+dependencies = []
 
-[tool.poetry.dependencies]
-python = "^3.13"
-
-[tool.poetry.group.dev.dependencies]
-mkdocs-material = "^9.7.6"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "mkdocs-material>=9.7.6",
+]
